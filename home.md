@@ -106,6 +106,8 @@ After the execution of these two commands, the 'id_rsa' file can be read.
 
 ![Obtaining the RSA private key](images/rsa_key.png)
 
-With the RSA private key, remote connection to the presidential machine via SSH protocol is possible.
+With the RSA private key, remote connection to the presidential machine as root via SSH protocol is possible.
+
+Once arrived at this point, obtaining the final-flag can be done and it marks the end of the challenge.
 
 ![Root access](images/ssh_&_final_flag.png)
