@@ -49,7 +49,9 @@ On the web page that is obtained by connecting to the subdomain, there is an acc
 
 The hash alone cannot be used. John the Ripper is a tool to use to crack the password. With the famous rockyou dictionary you can force the password corresponding to the hash, which turns out to be Stella.
 
-Browsing the page another thing you can easily notice is that the version of phpMyAdmin is old. Searchsploit is a tool that can be used to search for known exploits and vulnerabilities in different versions of software and operating systems.
+Browsing the page another thing you can easily notice is that the version of phpMyAdmin is old. It is indicated that the version of the web application is 4.8.1 while the latest stable version is 4.9.5.
+
+Searchsploit is a tool that can be used to search for known exploits and vulnerabilities in different versions of software and operating systems.
 It turns out there are three vulnerabilities, one of which has command execution as impact. Searchsploit can give us more information about this vulnerability and how it can be exploited.
 To exploit this vulnerability it is necessary to:
 1) be authenticated
@@ -95,4 +97,4 @@ After executing these two commands, the id_rsa file can be read.
 
 Now having the RSA private key, we can remotely connect to the shell on the presidential machine via the ssh protocol.
 
-![Root access](ssh_&_final_flag)
+![Root access](ssh_&_final_flag.png)
