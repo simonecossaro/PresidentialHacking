@@ -86,7 +86,7 @@ and structuring the URL as shown, a reverse shell is obtained on the presidentia
 
 ![Exploitation of the vulnerability](images/sql_vuln.png)
 
-At this point, authentication can be done using the previously extracted admin user credentials.
+Once the reverse shell is obtained, authentication on it can be done using the previously extracted admin user credentials.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
 
