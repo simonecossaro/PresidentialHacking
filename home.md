@@ -11,8 +11,6 @@ In the presented scenario the US state is developing the registration website fo
 
 The goal of the challenge is to gain root access to the server.
 
-![Steps of recognition](images/reconnaissance.png)  
-
 ## Tools
 
 VirtualBox is the tool needed for this challenge to run the following two virtual machines:
@@ -26,6 +24,8 @@ The two virtual machines are connected to the same network with NAT.
 The first step of the attack is reconnaissance. The shell command `netdiscover` automates the process of discovering live hosts on a network. Executing it will first allow us to find out if the presidential machine is connected to the network and if so what its IP address is. 
 
 Once the IP address of the machine has been determined, we proceed by trying to identify the services and open ports and the software versions on it. The `nmap` command allows us to do this.
+
+![Steps of recognition](images/reconnaissance.png)  
 
 ## Enumeration
 
