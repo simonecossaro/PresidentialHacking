@@ -25,4 +25,18 @@ Once the IP address of the machine has been determined, we proceed by trying to 
 
 ## Exploiting
 
+
+
 ## Privilege Escalation
+
+The next step is to list the capabilities associated with the available executable files with the getcap command. this way we see that we have "+EP" in the tarS binary. This binary allows us to compress any file on the system without being root. Therefore, once compressed, we will only have to decompress it to be able to read the contents of the file.
+There is an id_rsa file in the /root/.ssh/ directory. This file usually contains an RSA private key used for SSH authentication. This private key is associated with a public/private key pair and is used to authenticate the user on remote servers via SSH.
+By having '+ep' we can compress the “id_rsa“ file, decompress it and gain visibility to the content.
+
+The tarS -xvf id_rsa.tar /root/.ssh/id_rsa command creates a tar archive called id_rsa.tar containing the id_rsa file present in the /root/.ssh/ directory.
+
+The tar -xvf id_rsa.tar command, however, extracts the files from the id_rsa.tar archive.
+
+After executing these two commands, the id_rsa file can be read.
+
+Now having the RSA private key, we can remotely connect to the shell on the presidential machine via the ssh protocol.
