@@ -91,4 +91,8 @@ The tar -xvf id_rsa.tar command, however, extracts the files from the id_rsa.tar
 
 After executing these two commands, the id_rsa file can be read.
 
+![Obtaining the RSA private key](images/rsa_key.png)
+
 Now having the RSA private key, we can remotely connect to the shell on the presidential machine via the ssh protocol.
+
+![Root access](ssh_&_final_flag)
