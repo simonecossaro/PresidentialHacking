@@ -32,6 +32,7 @@ The scan shows that the machine is running a web service on port 80 with http pr
 ## Enumeration
 
 
+![Steps of enumeration](images/enumeration.png)  
 
 ## Exploiting
 
