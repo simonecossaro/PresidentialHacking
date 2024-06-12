@@ -7,6 +7,8 @@ This report presents the steps taken to solve the Vulnhub CTF (Capture the Flag)
 In the presented scenario the US state is developing the registration website for the presidential elections and wants to test the security of the server before the website and registration system are launched. One of the political parties is concerned that the other political party is going to perform electoral fraud by hacking into the registration system and falsifying the votes.
 The goal of the challenge is to gain root access to the server.
 
+![Steps of recognition](images/reconnaissance.png)  
+
 ## Tools
 
 VirtualBox is the tool needed for this challenge to run the following two virtual machines:
