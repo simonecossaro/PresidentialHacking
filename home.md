@@ -52,11 +52,15 @@ Using Gobuster with the vhost option allows the discovery of subdomains. With th
 
 The subdomain's web page features an access panel to "phpMyAdmin." By entering the previously obtained credentials, it is possible to log in and access a SQL database containing the hash of an admin user's password.
 
-The hash alone cannot be used, so John the Ripper, a password-cracking tool, is employed. Using the famous rockyou dictionary, the password corresponding to the hash is forced, revealing it to be "Stella."
+The hash alone cannot be used, so John the Ripper, a password-cracking tool, is employed. Using the famous rockyou dictionary, the password corresponding to the hash is forced, revealing it to be "Stella".
 
 Browsing the page further, it is noted that the phpMyAdmin version is outdated, listed as 4.8.1 while the latest stable version is 4.9.5.
 
-Searchsploit, a tool for searching known exploits and vulnerabilities, reveals three vulnerabilities for this version, one of which allows command execution. Searchsploit provides detailed information about this vulnerability and how it can be exploited.
+Searchsploit, a tool for searching known exploits and vulnerabilities, reveals three vulnerabilities for this version, one of which allows command execution. 
+
+![Searchsploit response](images/searchsploit.png)
+
+Searchsploit provides detailed information about this vulnerability and how it can be exploited.
 
 To exploit this vulnerability it is necessary to:
 1) authenticate
