@@ -72,7 +72,7 @@ Under normal circumstances, the web application does not interpret or execute co
 
 The URL must have the following format:
 
-'http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}'
+'http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieValue}'
 
 where {cookieValue} is the current session's cookie value.
 
