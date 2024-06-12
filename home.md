@@ -1,14 +1,9 @@
-# My Open Publishing Space
-
-## Create, Share and Collaborate
-
-![Photo of Mountain](images/mountain.jpg)
-
-[Docsify](https://docsify.js.org/#/) can generate article, portfolio and documentation websites on the fly. Unlike Docusaurus, Hugo and many other Static Site Generators (SSG), it does not generate static html files. Instead, it smartly loads and parses your Markdown content files and displays them as a website.
+# Report Cybersecurity
+Simone Cossaro IN2000201
 
 ## Introduction
 
-**Markdown** is a system-independent markup language that is easier to learn and use than **HTML**.
+This report presents the steps taken to solve the Vulnhub CTF (Capture the Flag) challange called Presidential-1. The attack was carried out following the walkthrough available [here](https://www.hackingarticles.in/presidential-1-vulnhub-walkthrough/).
 
 ![The Markdown Mark](images/markdown-red.png)  
 _Figure 1: The Markdown Mark_
