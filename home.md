@@ -31,8 +31,16 @@ The scan shows that the machine is running a web service on port 80 with http pr
 
 ## Enumeration
 
+By visiting the main page of the web service on port 80, you will find an email address at the bottom (contact@votenow.local). This way we get a domain name: votenow.local.
+It's possible to associate the domain name with the IP address by adding a line to the /etc/hosts file.
+
+In this enumeration phase, the use of Gobuster, a tool for scanning directories and files on web servers, is essential. It is used to locate hidden or unadvertised resources on a web server, such as directories or files that may not be listed directly on a web page but may still be accessible.
+The gobuster command specifies the file extensions to search for and the dictionary to use for brute force. Brute force in this context refers to systematically sending HTTP requests for each entry in the provided wordlist. Gobuster tries every word in the wordlist such as potential directory, file, subdomain, etc., until it finds valid resources or runs out of options.
 
 ![Steps of enumeration](images/enumeration.png)  
+
+A config.php.bak file was detected. Usually these files contain a backup copy of the original config.php file. It in turn contains configuration information that may be important.
+In fact, the file contains the user's credentials which could prove useful later.
 
 ## Exploiting
 
