@@ -27,7 +27,11 @@ Once the IP address of the machine has been determined, we proceed by trying to 
 
 ![Steps of recognition](images/reconnaissance.png)  
 
+The scan shows that the machine is running a web service on port 80 with http protocol and a remote shell on port 2082 with ssh protocol.
+
 ## Enumeration
+
+
 
 ## Exploiting
 
