@@ -17,9 +17,9 @@ The two virtual machines are connected to the same network with NAT.
 
 ## Recognition
 
-The first step of the attack is reconnaissance. The shell command netdiscover automates the process of discovering live hosts on a network. Executing it will first allow us to find out if the presidential machine is connected to the network and if so what its IP address is. 
+The first step of the attack is reconnaissance. The shell command _netdiscover_ automates the process of discovering live hosts on a network. Executing it will first allow us to find out if the presidential machine is connected to the network and if so what its IP address is. 
 
-Once the IP address of the machine has been determined, we proceed by trying to identify the services and open ports and the software versions on it. The nmap command allows us to do this.
+Once the IP address of the machine has been determined, we proceed by trying to identify the services and open ports and the software versions on it. The _nmap_ command allows us to do this.
 
 ## Enumeration
 
