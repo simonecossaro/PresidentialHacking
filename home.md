@@ -4,26 +4,14 @@ Simone Cossaro IN2000201
 ## Introduction
 
 This report presents the steps taken to solve the Vulnhub CTF (Capture the Flag) challange called Presidential-1. The attack was carried out following the walkthrough available [here](https://www.hackingarticles.in/presidential-1-vulnhub-walkthrough/).
+In the presented scenario the US state is developing the registration website for the presidential elections and wants to test the security of the server before the website and registration system are launched. One of the political parties is concerned that the other political party is going to perform electoral fraud by hacking into the registration system and falsifying the votes.
+The goal of the challenge is to gain root access to the server.
 
-![The Markdown Mark](images/markdown-red.png)  
-_Figure 1: The Markdown Mark_
+## Tools
 
-Some of the key benefits are:
-
-1. Markdown is simple to learn, with minimal extra characters, so it's also quicker to write content.
-2. Less chance of errors when writing in markdown.
-3. Produces valid XHTML output.
-4. Keeps the content and the visual display separate, so you cannot mess up the look of your site.
-5. Write in any text editor or Markdown application you like.
-6. Markdown is a joy to use!
-
-John Gruber, the author of Markdown, puts it like this:
-
-> The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.
-> -- <cite>John Gruber</cite>
-
-
-Without further delay, let us go over the main elements of Markdown and what the resulting HTML looks like:
+VirtualBox is the tool needed for this challenge to run the following two virtual machines:
+* the Presidential VM available on Vulnhub [here](https://www.vulnhub.com/entry/presidential-1,500/)
+* an attacking Kali Linux VM
 
 ### Headings
 
