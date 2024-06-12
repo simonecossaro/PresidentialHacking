@@ -1,11 +1,7 @@
 # Report Presidential Hacking
 Simone Cossaro IN2000201
 
-Cybersecurity Course
-
-University of Trieste
-
-Academic year 2023-2024
+Cybersecurity Course - University of Trieste - Academic year 2023-2024
 
 ## Introduction
 
