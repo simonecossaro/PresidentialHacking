@@ -102,4 +102,4 @@ After the execution of these two commands, the 'id_rsa' file can be read.
 
 With the RSA private key, remote connection to the presidential machine via SSH protocol is possible.
 
-![Root access](ssh_&_final_flag.png)
+![Root access](images/ssh_&_final_flag.png)
