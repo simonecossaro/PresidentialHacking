@@ -39,7 +39,7 @@ The scan reveals that the machine with the IP address 10.0.2.8 is running a web 
 
 ## Enumeration
 
-Visiting the main page of the web service on port 80 and scrolling to the bottom reveals an email address (contact@votenow.local), providing the domain name: votenow.local. The domain name can be associated with the IP address by adding a line to the **`/etc/hosts`** file.
+Visiting the main page of the web service on port 80 and scrolling to the bottom reveals an email address (contact@votenow.local), providing the domain name: **votenow.local**. The domain name can be associated with the IP address by adding a line to the **`/etc/hosts`** file.
 
 In this enumeration phase, Gobuster, a tool for scanning directories and files on web servers, is essential. It locates hidden or unadvertised resources on a web server, such as directories or files that may not be listed directly on a web page but are still accessible.
 
