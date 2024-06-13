@@ -47,10 +47,10 @@ The Gobuster command specifies the file extensions to search for and the diction
 
 Four accessible files were detected during the enumeration phase:
 
-1. **`/index.html`**: This is the main page of the web server, which has already been visited.
-2. **`/about.html`**: This page contains placeholder text ("lorem ipsum") and does not provide any useful information.
-3. **`/config.php.bak`**: This file appears to be a backup of the `config.php` file and likely contains important configuration information. As seen from the response to the `curl` command, it contains user credentials, which could be useful later.
-4. **`/config.php`**: This file is an empty PHP file, offering no additional information.
+1. **`/index.html`**: this is the main page of the web server, which has already been visited.
+2. **`/about.html`**: this page contains placeholder text ("lorem ipsum") and does not provide any useful information.
+3. **`/config.php.bak`**: this file appears to be a backup of the `config.php` file and likely contains important configuration information. As seen from the response to the `curl` command, it contains user credentials, which could be useful later.
+4. **`/config.php`**: this file is an empty PHP file, offering no additional information.
 
 ## Exploiting
 
