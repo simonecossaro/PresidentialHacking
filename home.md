@@ -61,7 +61,7 @@ Navigating to the subdomain's web page reveals an access panel for "phpMyAdmin".
 
 The hash alone cannot be used, so John the Ripper, a password-cracking tool, is employed. Using the famous rockyou dictionary, the password corresponding to the hash is forced, revealing it to be "Stella".
 
-![Execution of Gobuster to obtain the subdomains and password cracking](images/subdomain_john_hash)
+![Execution of Gobuster to obtain the subdomains and password cracking](images/subdomain_john_hash.png)
 
 Browsing the page further, it is noted, as it is written, that the version of phpMyAdmin is obsolete, listed as 4.8.1 while the latest stable version is 4.9.5.
 
@@ -108,13 +108,14 @@ Following payload execution, a successful reverse shell is established. Authenti
 To acquire a more functional interactive shell compared to the initially obtained limited one, the following Python command is employed:
 `python -c "import pty; pty.spawn('/bin/bash')"`
 
-By utilizing the `ls` command to list files and directories, it becomes evident that direct access to the flag of **`user.txt`** and the file **`read.txt`** is achievable.
+By utilizing the `ls` command to list files and directories, it becomes evident there is a direct access to the flag of **`user.txt`** and the file **`read.txt`**.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
 
 ## Privilege Escalation
 
 The last steps concern scaling privileges in order to gain root access.
+
 The next thing to do is use `getcap` command to list the available capabilities associated with files in the file system.  
 
 It is noted that the tarS binary has '+ep' set. This setting grants the `cap_dac_read_search` capability, allowing tarS to read and search files in locations where it has DAC (Discretionary Access Control) permissions, without requiring full root privileges. Thus, tarS can compress files across the system without root access. Once compressed, files contents can be revealed by simply performing the decompression.
