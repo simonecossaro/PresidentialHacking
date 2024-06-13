@@ -102,10 +102,12 @@ The IP address **`10.0.2.4`** mentioned in the query is the Kali Linux machine's
 
 Following payload execution, a successful reverse shell is established. Authentication is accomplished using the previously obtained admin user credentials.
 
-Now it is possible to read the flag of **`user.txt`** and the file **`read.txt`**.
+To acquire a more functional interactive shell compared to the initially obtained limited one, the following Python command is employed:
+`python -c "import pty; pty.spawn('/bin/bash')"`
+
+By utilizing the `ls` command to list files and directories, it becomes evident that direct access to the flag of **`user.txt`** and the file **`read.txt`** is achievable.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
-
 
 ## Privilege Escalation
 
