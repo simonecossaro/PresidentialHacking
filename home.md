@@ -24,13 +24,16 @@ Both virtual machines are connected to the same network with NAT.
 
 ## Recognition
 
-The first step of the attack is reconnaissance. The shell command `netdiscover` automates the discovery of live hosts on a network. Executing it helps determine if the presidential machine is connected to the network and identifies its IP address.
+The first step of the attack is reconnaissance. This phase involves using various techniques to actively or passively gather information that supports targeting. The information collected can include details about the victim's organization, infrastructure, and personnel. In this case, the objective is to identify the IP address of the target machine and the services running on it.
 
-Once the IP address of the machine (10.0.2.8) is identified, we proceed to identify the services, open ports, and software versions on it using the `nmap` command.
+The shell command `netdiscover` automates the process of discovering live hosts on a network. It generates ARP requests for each IP address within a specified range. These requests are broadcasted to all devices on the local network, prompting devices with the corresponding IP addresses to respond with their MAC addresses. `netdiscover` collects these responses and records the IP and MAC address pairs, and it can also identify the device vendor. As a result, the output of `netdiscover` is a list of active hosts on the network.
 
-![Steps of recognition](images/reconnaissance.png)  
+From the vendor column in the obtained list, it is suggested that the potential target IP addresses could be 10.0.2.3 and 10.0.2.8. To determine which is the correct address, it is necessary to identify the active services on these addresses.
+The `nmap` command is used to identify the services, open ports, and software versions on the machine at the indicated address. 
 
-The scan reveals that the machine is running a web service on port 80 with HTTP protocol and a remote shell on port 2082 with SSH protocol.
+![Steps of recognition](images/recognition.png)  
+
+The scan reveals that the machine with the IP address 10.0.2.8 is running a web service on port 80 using the HTTP protocol and a remote shell on port 2082 using the SSH protocol. This machine is the presidential VM.
 
 ## Enumeration
 
