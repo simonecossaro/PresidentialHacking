@@ -109,23 +109,26 @@ Now it is possible to read the flag of **`user.txt`** and the file **`read.txt`*
 
 ## Privilege Escalation
 
-The next step is listing the capabilities associated with available executable files using the `getcap` command.  It is noted that the tarS binary has '+EP'. This binary allows the compression of any file on the system without being root. Once compressed, it's possible to read the contents of the file by performing only the decompression.
+The last steps concern scaling privileges in order to gain root access.
+The next thing to do is use `getcap` command to list the available capabilities associated with files in the file system.  
 
-The '/root/.ssh/' directory contains an 'id_rsa' file, which typically holds an RSA private key for SSH authentication.
-By having '+ep', compressing and decompressing the 'id_rsa' file, visibility to its contents is gained.
+It is noted that the tarS binary has '+ep' set. This setting grants the `cap_dac_read_search` capability, allowing tarS to read and search files in locations where it has DAC (Discretionary Access Control) permissions, without requiring full root privileges. Thus, tarS can compress files across the system without root access. Once compressed, files contents can be revealed by simply performing the decompression.
+
+The **`/root/.ssh/`** directory contains an **`id_rsa`** file, which typically holds an RSA private key for SSH authentication.
+By using tarS to compress and decompress **`id_rsa`**, become possible to view its contents.
 
 Compression and decompression are done by the two following commands:
 
-* `tarS -xvf id_rsa.tar /root/.ssh/id_rsa` : creates a tar archive called 'id_rsa.tar' containing the 'id_rsa' file present in the '/root/.ssh/' directory.
+* `tarS -xvf id_rsa.tar /root/.ssh/id_rsa` : creates a tar archive called **`id_rsa.tar`** containing the **`id_rsa`** file present in the **`/root/.ssh/`** directory.
 
-* `tar -xvf id_rsa.tar` : extracts the file from the 'id_rsa.tar' archive.
+* `tar -xvf id_rsa.tar` : extracts files from the **`id_rsa.tar`** archive.
 
-After the execution of these two commands, the 'id_rsa' file can be read.
+After the execution of these two commands, the **`id_rsa`** file can be read.
 
 ![Obtaining the RSA private key](images/rsa_key.png)
 
 With the RSA private key, remote connection to the presidential machine as root via SSH protocol is possible.
 
-Once arrived at this point, obtaining the final-flag can be done and it marks the end of the challenge.
+Once arrived at this point, the final-flag can be obtained and this completes the challenge.
 
 ![Root access](images/ssh_&_final_flag.png)
