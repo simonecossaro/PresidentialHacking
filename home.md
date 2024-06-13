@@ -45,9 +45,12 @@ The Gobuster command specifies the file extensions to search for and the diction
 
 ![Steps of enumeration](images/enumeration.png)  
 
-A 'config.php.bak' file was detected. These files usually contain a backup copy of the original 'config.php' file, which in turn contains important configuration information.
+Four accessible files were detected during the enumeration phase:
 
-Indeed, the file contains user credentials that may prove useful later.
+1. **`/index.html`**: This is the main page of the web server, which has already been visited.
+2. **`/about.html`**: This page contains placeholder text ("lorem ipsum") and does not provide any useful information.
+3. **`config.php.bak`**: This file appears to be a backup of the `config.php` file and likely contains important configuration information. As seen from the response to the `curl` command, it contains user credentials, which could be useful later.
+4. **`config.php`**: This file is an empty PHP file, offering no additional information.
 
 ## Exploiting
 
