@@ -76,7 +76,7 @@ Detailed information on how to exploit the RCE vulnerability is provided in resp
 
 The exact same exploit is presented [here](https://www.exploit-db.com/exploits/50457).
 
-As a first approximation the exploit steps in sequence are:
+As a first approximation the exploitation steps in sequence are:
 1) authenticate
 2) obtain the phpMyAdmin cookie
 3) execute a SQL query
