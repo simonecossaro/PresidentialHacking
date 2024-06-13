@@ -67,7 +67,9 @@ Searchsploit, a tool for searching known exploits and vulnerabilities, reveals t
 ![Searchsploit response](images/searchsploit.png)
 
 Detailed information on how to exploit the RCE vulnerability is provided in response to the following searchsploit command:
+
 `searchsploit -x /php/webapps/50457.py`
+
 The exact same exploit is presented [here](https://www.exploit-db.com/exploits/50457).
 
 As a first approximation the exploit steps in sequence are:
@@ -84,9 +86,9 @@ Once authenticated it is possible to execute SQL queries on the databases presen
 
 The URL must be edited to the following format:
 
-**`http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieValue}`**
+**`http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieVal}`**
 
-replacing {cookieValue} with the current session's cookie value.
+replacing `{cookieVal}` with the current session's cookie value.
 
 By listening with a netcat listener on port 443 and injecting a SQL query like:
 
@@ -99,6 +101,7 @@ The IP address **`10.0.2.4`** mentioned in the query is the Kali Linux machine's
 ![Exploitation of the vulnerability](images/sql_vuln.png)
 
 Following payload execution, a successful reverse shell is established. Authentication is accomplished using the previously obtained admin user credentials.
+
 Now it is possible to read the flag of **`user.txt`** and the file **`read.txt`**.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
