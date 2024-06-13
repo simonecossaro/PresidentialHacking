@@ -6,6 +6,7 @@ Simone Cossaro IN2000201
 ## Introduction
 
 This report details the steps taken to solve the Vulnhub CTF (Capture the Flag) challenge known as Presidential-1.
+
 Capture the Flag challenges are a cornerstone in the training and development of cybersecurity professionals. These competitions are designed to simulate real-world scenarios where participants must apply their knowledge and skills to solve security-related problems. 
 
 In the scenario of Presidential-1, the U.S. state is developing a registration website for presidential elections and seeks to test the security of the server before launching the website and registration system. One political party is concerned that the opposing party might commit electoral fraud by hacking into the registration system and falsifying votes.
