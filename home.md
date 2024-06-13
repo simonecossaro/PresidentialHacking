@@ -62,7 +62,7 @@ The hash alone cannot be used, so John the Ripper, a password-cracking tool, is 
 
 ![Execution of Gobuster to obtain the subdomains and password cracking](subdomain_john_hash)
 
-Browsing the page further, it is noted that the phpMyAdmin version is outdated, listed as 4.8.1 while the latest stable version is 4.9.5.
+Browsing the page further, it is noted, as it is written, that the version of phpMyAdmin is obsolete, listed as 4.8.1 while the latest stable version is 4.9.5.
 
 Searchsploit, a tool for searching known exploits and vulnerabilities, reveals three vulnerabilities for this version, one of which allows remote code execution. 
 
