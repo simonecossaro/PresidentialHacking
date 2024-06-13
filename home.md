@@ -60,7 +60,7 @@ Navigating to the subdomain's web page reveals an access panel for "phpMyAdmin".
 
 The hash alone cannot be used, so John the Ripper, a password-cracking tool, is employed. Using the famous rockyou dictionary, the password corresponding to the hash is forced, revealing it to be "Stella".
 
-![Execution of Gobuster to obtain the subdomains and password cracking](subdomain_john_hash)
+![Execution of Gobuster to obtain the subdomains and password cracking](images/subdomain_john_hash)
 
 Browsing the page further, it is noted, as it is written, that the version of phpMyAdmin is obsolete, listed as 4.8.1 while the latest stable version is 4.9.5.
 
