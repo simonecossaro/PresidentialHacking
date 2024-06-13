@@ -20,3 +20,5 @@ The objective of the challenge is to gain root access to the server.
 
 The attack was conducted following the walkthrough available [here](https://www.hackingarticles.in/presidential-1-vulnhub-walkthrough/).
 
+![](final_flag.png)
+
