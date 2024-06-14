@@ -29,7 +29,7 @@ The first step of the attack is reconnaissance. This phase involves using variou
 
 The shell command `netdiscover` automates the process of discovering live hosts on a network. It generates ARP requests for each IP address within a specified range. These requests are broadcasted to all devices on the local network, prompting devices with the corresponding IP addresses to respond with their MAC addresses. `netdiscover` collects these responses and records the IP and MAC address pairs, and it can also identify the device vendor. As a result, the output of `netdiscover` is a list of active hosts on the network.
 
-From the vendor column in the obtained list, it is suggested that the potential target IP address could be 10.0.2.3 or 10.0.2.8. To determine which is the correct address, it is necessary to identify the active services on these addresses.
+From the vendor column in the obtained list, it is suggested that the potential target IP address could be 10.0.2.3 or 10.0.2.8. To determine which is the correct one, it is necessary to identify the active services on these addresses.
 
 The `nmap` command is used to identify the services, open ports, and software versions on the machine at the indicated address. 
 
