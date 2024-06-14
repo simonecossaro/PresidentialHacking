@@ -29,7 +29,7 @@ The first step of the attack is reconnaissance. This phase involves using variou
 
 The shell command `netdiscover` automates the process of discovering live hosts on a network. It generates ARP requests for each IP address within a specified range. These requests are broadcasted to all devices on the local network, prompting devices with the corresponding IP addresses to respond with their MAC addresses. `netdiscover` collects these responses and records the IP and MAC address pairs, and it can also identify the device vendor. As a result, the output of `netdiscover` is a list of active hosts on the network.
 
-From the vendor column in the obtained list, it is suggested that the potential target IP addresses could be 10.0.2.3 and 10.0.2.8. To determine which is the correct address, it is necessary to identify the active services on these addresses.
+From the vendor column in the obtained list, it is suggested that the potential target IP addresses could be 10.0.2.3 or 10.0.2.8. To determine which is the correct address, it is necessary to identify the active services on these addresses.
 
 The `nmap` command is used to identify the services, open ports, and software versions on the machine at the indicated address. 
 
@@ -39,7 +39,9 @@ The scan reveals that the machine with the IP address 10.0.2.8 is running a web 
 
 ## Enumeration
 
-Visiting the main page of the web service on port 80 and scrolling to the bottom reveals an email address (contact@votenow.local), providing the domain name: **votenow.local**. The domain name can be associated with the IP address by adding a line to the **`/etc/hosts`** file.
+Visiting the main page of the web service on port 80 and scrolling to the bottom reveals an email address (contact@votenow.local), providing the domain name: **votenow.local**. 
+
+The domain name can be associated with the IP address by adding a line to the **`/etc/hosts`** file.
 
 In this enumeration phase, Gobuster, a tool for scanning directories and files on web servers, is essential. It locates hidden or unadvertised resources on a web server, such as directories or files that may not be listed directly on a web page but are still accessible.
 
