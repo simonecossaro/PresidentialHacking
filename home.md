@@ -88,7 +88,9 @@ Authentication was done with the credentials obtained previously.
 
 The phpMyAdmin cookie can be obtained by inspecting the browser's developer tools to find the value of the cookie named phpMyAdmin.
 
-Once authenticated it is possible to execute SQL queries on the databases present, so the point 3 can be easily done. The query must contain a php script within backticks, but in this stage it would not been executed. Under normal circumstances, the web application does not interpret or execute code placed within backticks in the SQL queries. However, by meticulously crafting the URL, it becomes possible to execute the script. This script embedded in the SQL query is the payload.
+Once authenticated it is possible to execute SQL queries on the databases present, so the point 3 can be easily done. The query must contain a php script within backticks. In this phase the successful execution of the query does not involve the execution of the script, which is not interpreted. 
+
+Under normal circumstances, the web application does not interpret or execute code placed within backticks in the SQL queries. However, by meticulously crafting the URL, it becomes possible to execute the script. This script embedded in the SQL query is the payload.
 
 The URL must be edited to the following format:
 
@@ -111,7 +113,7 @@ Following payload execution, a successful reverse shell is established. Authenti
 To acquire a more functional interactive shell compared to the initially obtained limited one, the following Python command is employed:
 `python -c "import pty; pty.spawn('/bin/bash')"`
 
-By utilizing the `ls` command to list files and directories, it becomes evident there is a direct access to the flag of **`user.txt`** and the file **`read.txt`**.
+By utilizing the `ls` command to list files and directories, it becomes evident that there is a direct access to the flag of **`user.txt`** and the file **`read.txt`**.
 
 ![Reverse shell connection and authentication](images/reverse_shell.png)
 
@@ -132,7 +134,7 @@ Compression and decompression are done by the two following commands:
 
 * `tar -xvf id_rsa.tar` : extracts files from the **`id_rsa.tar`** archive.
 
-After the execution of these two commands, the **`id_rsa`** file can be read.
+After the execution of these two commands, the contents of the **`id_rsa`** file can be read.
 
 ![Obtaining the RSA private key](images/rsa_key.png)
 
